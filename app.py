@@ -36,7 +36,7 @@ with st.sidebar:
                             'Parkinsons Prediction',
                             'CureAI ChatBot'],
                            menu_icon='hospital-fill',
-                           icons=['activity', 'heart', 'person', '', 'bot'],
+                           icons=['activity', 'heart', 'person', '', ''],
                            default_index=0)
 
 # Load models
