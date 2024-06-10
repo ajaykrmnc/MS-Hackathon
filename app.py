@@ -19,7 +19,7 @@ client = AzureOpenAI(
 
 
 # Initialize messages with a system message
-messages = [{"role": "system", "content": "You are a doctor and answer to health related tasks."}]
+messages = [{"role": "system", "content": "You are a doctor and tell according to symptoms you have to tell which clinical test is necessary based on keywords and suggest what might cause this problem briefly in about 100 words"}]
 
 # Set page configuration
 st.set_page_config(page_title="Disease Prediction and ChatBOt",
