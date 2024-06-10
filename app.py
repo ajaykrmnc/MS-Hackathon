@@ -2,9 +2,27 @@ import os
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
+from openai import AzureOpenAI
+
+
+ENDPOINT = "https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"
+API_KEY = "445dcfab-cbf2-463c-a733-b66c7dd8ba50"
+
+API_VERSION = "2024-02-01"
+MODEL_NAME = "gpt-35-turbo"
+
+client = AzureOpenAI(
+    azure_endpoint=ENDPOINT,
+    api_key=API_KEY,
+    api_version=API_VERSION,
+)
+
+
+# Initialize messages with a system message
+messages = [{"role": "system", "content": "You are a doctor and answer to health related tasks."}]
 
 # Set page configuration
-st.set_page_config(page_title="Disease Prediction",
+st.set_page_config(page_title="Disease Prediction and ChatBOt",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
@@ -24,19 +42,20 @@ parkinsons_model = pickle.load(open('./saved_models/parkinsons_model.sav', 'rb')
 
 # sidebar for navigation
 with st.sidebar:
-    selected = option_menu('Multiple Disease Prediction System',
+    selected = option_menu('Multiple Disease Checker and AI Chatbot',
 
                            ['BMI Calculator',
                             'Diabetes Prediction',
                             'Heart Disease Prediction',
-                            'Parkinsons Prediction'],
+                            'Parkinsons Prediction',
+                            'CureAI ChatBot'],
                            menu_icon='hospital-fill',
-                           icons=['activity', 'heart', 'person'],
+                           icons=['activity', 'heart', 'person', '', 'bot'],
                            default_index=0)
 
 
 if selected =='BMI Calculator':
-    st.title('Welcome to BMI Calculator')
+    st.title('Calculate your BMI Index')
     st.write('Body mass index (BMI) is a value derived from the mass and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is expressed in units of kg/m², resulting from mass in kilograms and height in metres.')
 
     st.write("**Let's chek your BMI ↓**")
@@ -279,3 +298,29 @@ if selected == "Parkinsons Prediction":
             parkinsons_diagnosis = "The person does not have Parkinson's disease"
 
     st.success(parkinsons_diagnosis)
+
+if selected == 'CureAI ChatBot':
+    st.title("CureAI chatbot")
+    user_input = st.text_input("Ask any question about health your AI doctor is here to answer all you queries", key = "user_input")
+    if st.button("Send"):
+        if user_input.strip() == "":
+            st.warning("Please enter a message.")
+        else: 
+            # Add user message to the conversation
+            messages.append({"role": "user", "content": user_input})
+
+            # Get completion from OpenAI
+            completion = client.chat.completions.create(model=MODEL_NAME, messages=messages)
+
+            # Add assistant's response to the conversation
+            assistant_response = completion.choices[0].message.content
+            messages.append({"role": "assistant", "content": assistant_response})
+
+
+    # Display messages
+    for message in messages:
+        if message["role"] == "assistant":
+            st.write("",message["content"])
+
+    st.markdown("---")
+
