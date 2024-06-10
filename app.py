@@ -9,6 +9,7 @@ st.set_page_config(page_title="Disease Prediction",
                    page_icon="🧑‍⚕️")
 
 
+
     
 # getting the working directory of the main.py
 #working_dir = os.path.dirname(os.path.abspath(__file__))
