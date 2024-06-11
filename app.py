@@ -1,8 +1,10 @@
 import os
 import pickle
 import streamlit as st
+import pymongo
 from streamlit_option_menu import option_menu
 from openai import AzureOpenAI
+
 
 # Import custom modules
 from bmi_calculator import bmi_calculator
@@ -22,36 +24,61 @@ client = AzureOpenAI(
     api_version=API_VERSION,
 )
 
+#database
+# myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+# mydb = myclient["mydatabase"]
+# mycol = mydb["patient"]
+
+# Create an array to store user name and result
+patient_data = []
+
+# Add user name and result to the array
+patient_data.append({"name": "John Doe", "result": "Some result"})
+
+# Save the patient data to the database
+# mycol.insert_many(patient_data)
+
+
+
+
 # Set page configuration
 st.set_page_config(page_title="Disease Prediction and ChatBOt",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
-# Sidebar for navigation
-with st.sidebar:
-    selected = option_menu('Multiple Disease Checker and AI Chatbot',
-                           ['BMI Calculator',
-                            'Diabetes Prediction',
-                            'Heart Disease Prediction',
-                            'Parkinsons Prediction',
-                            'CureAI ChatBot'],
-                           menu_icon='hospital-fill',
-                           icons=['activity', 'heart', 'person', '', ''],
-                           default_index=0)
 
 # Load models
 diabetes_model = pickle.load(open('./saved_models/diabetes_model.sav', 'rb'))
 heart_disease_model = pickle.load(open('./saved_models/heart_disease_model.sav', 'rb'))
 parkinsons_model = pickle.load(open('./saved_models/parkinsons_model.sav', 'rb'))
 
-# Route to the appropriate module
-if selected == 'BMI Calculator':
-    bmi_calculator()
-elif selected == 'Diabetes Prediction':
-    diabetes_prediction(diabetes_model)
-elif selected == 'Heart Disease Prediction':
-    heart_disease_prediction(heart_disease_model)
-elif selected == 'Parkinsons Prediction':
-    parkinsons_prediction(parkinsons_model)
+#Sidebar for navigation
+with st.sidebar:
+    selected = option_menu('CureAI',
+                           ['Home', 'Disease Checker',
+                            'CureAI ChatBot'],
+                           menu_icon='hospital-fill',
+                           icons=['home', 'stethoscope', 'chat'],
+                           default_index=0)
+
+    
+
+if selected == 'Disease Checker':
+    sub_selected = st.sidebar.selectbox('Select Disease',
+                                ['BMI Calculator',
+                                'Diabetes Prediction',
+                                'Heart Disease Prediction',
+                                'Parkinsons Prediction'])
+    if sub_selected == 'BMI Calculator':
+        bmi_calculator()
+    elif sub_selected == 'Diabetes Prediction':
+        diabetes_prediction(diabetes_model)
+    elif sub_selected == 'Heart Disease Prediction':
+        heart_disease_prediction(heart_disease_model)
+    elif sub_selected == 'Parkinsons Prediction':
+        parkinsons_prediction(parkinsons_model)
 elif selected == 'CureAI ChatBot':
     chatbot(client, MODEL_NAME)
+else:
+    st.title("welcome to our site")
+

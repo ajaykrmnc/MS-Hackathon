@@ -11,6 +11,7 @@ def chatbot(client, model_name):
 
     # Input field for user message
     user_input = st.text_input("Your message:", key="user_input")
+    # Set the position of the input field to be fixed at the bottom of the screen
 
     if st.button("Send"):
         if user_input.strip() == "":
@@ -34,7 +35,7 @@ def chatbot(client, model_name):
     # Display the conversation history
     for message in st.session_state.messages:
         if message["role"] == "user":
-            st.markdown(f"**You:** {message['content']}")
+            st.markdown(f"<div style='margin-bottom: 20px; text-align: right;'><span style='padding: 15px; background-color: #262630; border-radius: 20px; font-color: white;'>{message['content']}</span></div>", unsafe_allow_html=True)
         elif message["role"] == "assistant":
             st.markdown(f"**CureAI: 🤖** {message['content']}")
 
