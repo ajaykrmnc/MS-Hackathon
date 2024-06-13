@@ -1,7 +1,7 @@
 import os
 import pickle
 import streamlit as st
-import pymongo
+# import pymongo
 from streamlit_option_menu import option_menu
 from openai import AzureOpenAI
 
