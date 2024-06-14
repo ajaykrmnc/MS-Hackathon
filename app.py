@@ -6,7 +6,8 @@ from streamlit_option_menu import option_menu
 from openai import AzureOpenAI
 
 
-# Import custom modules
+# Import custom module
+from home import home
 from bmi_calculator import bmi_calculator
 from diabetes_prediction import diabetes_prediction
 from heart_disease_prediction import heart_disease_prediction
@@ -80,5 +81,5 @@ if selected == 'Disease Checker':
 elif selected == 'CureAI ChatBot':
     chatbot(client, MODEL_NAME)
 else:
-    st.title("welcome to our site")
+    home()
 
