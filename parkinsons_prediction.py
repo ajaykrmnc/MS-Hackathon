@@ -1,6 +1,6 @@
 import streamlit as st
 
-def parkinsons_prediction(parkinsons_model):
+def parkinsons_prediction(parkinsons_model, collection):
     st.title("Parkinson's Disease Prediction using ML")
     
     col1, col2, col3, col4, col5 = st.columns(5)

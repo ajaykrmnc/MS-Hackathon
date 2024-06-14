@@ -6,12 +6,12 @@ def home():
     st.write("We provide the following services:")
     col1, col2 = st.columns(2)
     with col1:
-        st.write("4. BMI Calculator")
-        st.write("1. Parkinson's Disease Prediction")
-        st.write("2. Diabetes Prediction")
-        st.write("3. Heart Disease Prediction")
-        st.write("6. Breast Cancer Prediction")
-        st.write("5. Chatbot")
+        st.write("1. BMI Calculator")
+        st.write("2. Parkinson's Disease Prediction")
+        st.write("3. Diabetes Prediction")
+        st.write("4. Heart Disease Prediction")
+        st.write("5. Breast Cancer Prediction")
+        st.write("6. Chatbot")
     with col2:
         st.image("assets/doctor.png")
 
