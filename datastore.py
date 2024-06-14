@@ -2,6 +2,7 @@ import streamlit as st
 def table(collection):
     # Query the collection and sort the data in ascending order based on the level of disease
     st.title("Admin Dashboard")
+    st.subheader("Emergency Queue for each disease")
     # Create a dictionary to store the rows for each disease type
     disease_rows = {}
     sorted_data = collection.find().sort('level_of_disease', 1)
@@ -14,7 +15,6 @@ def table(collection):
         
         # Create a row with the extracted data
         row = [name, disease, level]
-        
         # Check if the disease type already exists in the dictionary
         if disease in disease_rows:
             # If it exists, append the row to the existing list of rows for that disease type

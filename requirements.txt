@@ -6,3 +6,4 @@ streamlit-option_menu == 0.3.13
 matplotlib-inline == 0.1.7
 openai == 1.33.0
 pymongo == 4.7.3
+plotly == 5.22.0
