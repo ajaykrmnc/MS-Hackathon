@@ -41,4 +41,11 @@ def diabetes_prediction(diabetes_model, collection):
         collection.save_one(emergency_input);
     if diab_diagnosis != '':
         st.success(diab_diagnosis)
+        if st.button('Enter into Emergency Queue'):
+            emergency_input = {
+            'user_name': name,
+            'kind_of_disease': 'Diabetes',
+            'level_of_disease': diab_prediction
+        }
+        collection.insert_one(emergency_input)
 
