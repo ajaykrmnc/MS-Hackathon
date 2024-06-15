@@ -62,8 +62,8 @@ with st.sidebar:
     selected = option_menu('CureAI',
                            ['Home', 'Disease Checker',
                             'CureAI ChatBot', 'Emergency Window'],
-                           menu_icon='hospital-fill',
-                           icons=['home', 'stethoscope', 'chat'],
+                           menu_icon='hospital',
+                           icons=['house', 'stethoscope', 'chat'],
                            default_index=0)
 
 
