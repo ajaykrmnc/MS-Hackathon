@@ -54,6 +54,6 @@ def diabetes_prediction(diabetes_model, collection):
             'user_name': name,
             'kind_of_disease': 'Diabetes',
             'level_of_disease': diab_prediction
-        }
+            }
         collection.insert_one(emergency_input)
 

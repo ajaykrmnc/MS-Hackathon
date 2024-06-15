@@ -6,51 +6,54 @@ def parkinsons_prediction(parkinsons_model, collection):
     col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
-        fo = st.text_input('MDVP Fo(Hz)', placeholder='119.992')
+        name = st.text_input('Enter your name', value='John Doe')
     with col2:
-        fhi = st.text_input('MDVP: Fhi(Hz)', placeholder='157.302')
+        fhi = st.text_input('MDVP: Fhi(Hz)', value=157.302)
     with col3:
-        flo = st.text_input('MDVP: Flo(Hz)', placeholder='74.997')
+        flo = st.text_input('MDVP: Flo(Hz)', value=74.997)
     with col4:
-        Jitter_percent = st.text_input('MDVP: Jitter(%)', placeholder='0.00784')
+        Jitter_percent = st.text_input('MDVP: Jitter(%)', value=0.00784)
     with col5:
-        Jitter_Abs = st.text_input('MDVP: Jitter(Abs)', placeholder='0.00007')
+        Jitter_Abs = st.text_input('MDVP: Jitter(Abs)', value=0.00007)
     with col1:
-        RAP = st.text_input('MDVP: RAP', placeholder='0.00370')
+        RAP = st.text_input('MDVP: RAP', value=0.00370)
     with col2:
-        PPQ = st.text_input('MDVP: PPQ', placeholder='0.00554')
+        PPQ = st.text_input('MDVP: PPQ', value=0.00554)
     with col3:
-        DDP = st.text_input('Jitter: DDP', placeholder='0.01109')
+        DDP = st.text_input('Jitter: DDP', value=0.01109)
     with col4:
-        Shimmer = st.text_input('MDVP: Shimmer', placeholder='0.04374')
+        Shimmer = st.text_input('MDVP: Shimmer', value=0.04374)
     with col5:
-        Shimmer_dB = st.text_input('MDVP: Shimmer(dB)', placeholder='0.426')
+        Shimmer_dB = st.text_input('MDVP: Shimmer(dB)', value=0.426)
     with col1:
-        APQ3 = st.text_input('Shimmer: APQ3', placeholder='0.02182')
+        APQ3 = st.text_input('Shimmer: APQ3', value=0.02182)
     with col2:
-        APQ5 = st.text_input('Shimmer: APQ5', placeholder='0.03130')
+        APQ5 = st.text_input('Shimmer: APQ5', value=0.03130)
     with col3:
-        APQ = st.text_input('MDVP: APQ', placeholder='0.02971')
+        APQ = st.text_input('MDVP: APQ', value=0.02971)
     with col4:
-        DDA = st.text_input('Shimmer: DDA', placeholder='0.06534')
+        DDA = st.text_input('Shimmer: DDA', value=0.06534)
     with col5:
-        NHR = st.text_input('NHR', placeholder='0.02211')
+        NHR = st.text_input('NHR', value=0.02211)
     with col1:
-        HNR = st.text_input('HNR', placeholder='21.033')
+        HNR = st.text_input('HNR', value=21.033)
     with col2:
-        RPDE = st.text_input('RPDE', placeholder='0.414783')
+        RPDE = st.text_input('RPDE', value=0.414783)
     with col3:
-        DFA = st.text_input('DFA', placeholder='0.815285')
+        DFA = st.text_input('DFA', value=0.815285)
     with col4:
-        spread1 = st.text_input('spread1', placeholder='-4.813031')
+        spread1 = st.text_input('spread1', value=-4.813031)
     with col5:
-        spread2 = st.text_input('spread2', placeholder='0.266482')
+        spread2 = st.text_input('spread2', value=0.266482)
     with col1:
-        D2 = st.text_input('D2', placeholder='2.301442')
+        D2 = st.text_input('D2', value=2.301442)
     with col2:
-        PPE = st.text_input('PPE', placeholder='0.284654')
+        PPE = st.text_input('PPE', value=0.284654)
+    with col3:
+        fo = st.text_input('MDVP Fo(Hz)', value=119.992)
 
     parkinsons_diagnosis = ''
+    parkinsons_prediction = 0
 
     if st.button("Parkinson's Test Result"):
         user_input = [fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]
@@ -64,3 +67,10 @@ def parkinsons_prediction(parkinsons_model, collection):
             parkinsons_diagnosis = "The person does not have Parkinson's disease"
     if parkinsons_diagnosis != "":
         st.success(parkinsons_diagnosis)
+        if st.button('Enter into Emergency Queue'):
+            emergency_input = {
+                'user_name': name,
+                'kind_of_disease': 'Parkinsons_preiction',
+                'level_of_disease': parkinsons_prediction
+            }
+            collection.insert_one(emergency_input)

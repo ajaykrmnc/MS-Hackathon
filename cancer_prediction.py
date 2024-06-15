@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 import pickle
 import numpy as np
 
+# global variable
+prediction = 0
 
 def get_clean_data():
     data = pd.read_csv("./data.csv")
@@ -161,13 +163,14 @@ def add_predictions(input_data):
     st.write("Probability of being malicious: ", model.predict_proba(input_array_scaled)[0][1])
     
     st.write("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+    return model.predict_proba(input_array_scaled)[0][1]
 
-def cancer_prediction():
+def cancer_prediction(collection):
     page_title="Breast Cancer Predictor",
     page_icon=":female-doctor:",
     layout="wide",
     initial_sidebar_state="expanded"
-    
+    prediction = 0
     with open("./style.css") as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
@@ -177,10 +180,22 @@ def cancer_prediction():
         st.title("Breast Cancer Predictor")
         st.write("Please connect this app to your cytology lab to help diagnose breast cancer form your tissue sample. This app predicts using a machine learning model whether a breast mass is benign or malignant based on the measurements it receives from your cytosis lab. You can also update the measurements by hand using the sliders in the sidebar. ")
 
-    col1, col2 = st.columns([4,1])
+    col1, col2 = st.columns([3.5, 1.5])
 
     with col1:
         radar_chart = get_radar_chart(input_data)
         st.plotly_chart(radar_chart)
     with col2:
-        add_predictions(input_data)
+        prediction = add_predictions(input_data)
+        name = st.text_input('Enter your Name', placeholder='Jane Doe')
+        if st.button('Enter into Emergency Queue'):
+            emergency_input = {
+              'user_name': name,
+              'kind_of_disease': 'Cancer',
+              'level_of_disease': prediction
+            }
+            if name != '':
+              collection.insert_one(emergency_input)
+            else:
+              st.write("Please enter your name")
+  

@@ -46,7 +46,7 @@ data = {
 
 
 # Set page configuration
-st.set_page_config(page_title="Disease Prediction and ChatBOt",
+st.set_page_config(page_title="AI Medical Health App",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
@@ -61,9 +61,9 @@ parkinsons_model = pickle.load(open('./saved_models/parkinsons_model.sav', 'rb')
 with st.sidebar:
     selected = option_menu('CureAI',
                            ['Home', 'Disease Checker',
-                            'CureAI ChatBot', 'Emergency Window'],
-                           menu_icon='hospital',
-                           icons=['house', 'stethoscope', 'chat'],
+                            'CureAI ChatBot', 'Admin Dashboard'],
+                           menu_icon='microsoft',
+                           icons=['house', 'robot', 'chat','database-fill-down'],
                            default_index=0)
 
 
@@ -100,7 +100,7 @@ if selected == 'Disease Checker':
     elif sub_selected == 'Parkinsons Prediction':
         parkinsons_prediction(parkinsons_model, collection)
     elif sub_selected == 'Breast Cancer':
-        cancer_prediction()
+        cancer_prediction(collection)
 elif selected == 'CureAI ChatBot':
     chatbot(client, MODEL_NAME)
 elif selected == 'Home':
