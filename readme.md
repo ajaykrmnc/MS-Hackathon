@@ -1,36 +1,38 @@
 # CureAI - AI Medical Health App 
 
-Welcome to the AI Medical Health App! This application is designed to assist users with various health-related predictions and calculations using artificial intelligence. The app provides a user-friendly interface where you can enter your symptoms and select the service you need from the sidebar.
+Welcome to the AI Medical Health App! This application is designed to assist users with various health-related predictions and calculations using machine learning. The app provides a user-friendly interface where you can enter your symptoms and select the service you need from the sidebar. Also you get help from AI powered chatbot for different health related queries 
+
 
 
 ## Members
-- Ajay Kumar
-- Ankit Kumar Singh
+- Ajay Kumar, IIT ISM Dhanbad
+- Ankit Kumar Singh, IIT ISM Dhanbad
+
+## Deployment
+The AI Medical Health App is deployed and ready to use. You can access it through the following link: [CureAI on Streamlit](https://ms-hackathon.streamlit.app)
 
 ## Features
 The AI Medical Health App offers the following services:
 
-1. **BMI Calculator**: Calculate your Body Mass Index (BMI) based on your height and weight. This can help you assess your overall health and determine if you are underweight, normal weight, overweight, or obese.
+# Disease Prediction using Machine Learning
 
-2. **Parkinson's Disease Prediction**: Predict the likelihood of having Parkinson's disease based on a set of symptoms and medical history. This can provide early detection and help in seeking appropriate medical attention.
+1. **Disease Prediction for common disease using Machine Learning**: 
+    - Parkinson's disease
+    - Diabetes
+    - Heart disease
+    - Breast cancer
+    - BMI calculator
+  For each disease, we have added a button to enter into the emergency queue, ensuring prompt attention for urgent cases.
 
-3. **Diabetes Prediction**: Predict the risk of developing diabetes based on various factors such as age, weight, blood pressure, and glucose levels. This can help individuals take preventive measures and make lifestyle changes to reduce the risk.
+1. **Chatbot Service**: Engage in a conversation with an AI-powered chatbot that can provide general health information, answer common medical questions, and offer guidance on various health topics.
 
-4. **Heart Disease Prediction**: Predict the probability of having heart disease based on factors like age, gender, cholesterol levels, and blood pressure. This can assist in identifying individuals who may be at higher risk and require further medical evaluation.
-
-5. **Breast Cancer Prediction**: Predict the likelihood of having breast cancer based on factors such as age, family history, and mammogram results. This can aid in early detection and prompt medical intervention.
-
-6. **Chatbot**: Engage in a conversation with an AI-powered chatbot that can provide general health information, answer common medical questions, and offer guidance on various health topics.
-   
-7. **Event Management**: Plan and manage health-related events such as workshops, seminars, and health camps. The app allows users to create event schedules, send invitations, and track attendance. This feature helps in promoting health awareness and education among the community.
-
-For each service, we have added a button to enter into the emergency queue, ensuring prompt attention for urgent cases.
+2. **Emergency Patient Management**: Manage and prioritize patients in emergency situations based on the severity of their condition or other relevant factors.
 
 
 ## Home Page
 When you open the app, you will be greeted with a welcome message and a list of available services. You can select the desired service from the sidebar. The home page also features an image of a doctor for a more engaging user experience.
 
-<img src="assets/doctor.png" alt="Doctor" width="200" height="200">
+<img src="assets/doctor.png" alt="Doctor" width="300" height="200">
 
 ## Installation
 To get started with the AI Medical Health App, ensure you have Python 3.8 installed on your system. Follow the steps below to install Python 3.8 and the necessary dependencies.
