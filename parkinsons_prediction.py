@@ -53,24 +53,25 @@ def parkinsons_prediction(parkinsons_model, collection):
         fo = st.text_input('MDVP Fo(Hz)', value=119.992)
 
     parkinsons_diagnosis = ''
-    parkinsons_prediction = 0
+    prediction = 0
 
     if st.button("Parkinson's Test Result"):
         user_input = [fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]
         user_input = [float(x) for x in user_input]
 
         parkinsons_prediction = parkinsons_model.predict([user_input])
-
+        prediction = parkinsons_prediction[0]
         if parkinsons_prediction[0] == 1:
             parkinsons_diagnosis = "The person has Parkinson's disease"
         else:
             parkinsons_diagnosis = "The person does not have Parkinson's disease"
     if parkinsons_diagnosis != "":
         st.success(parkinsons_diagnosis)
-        if st.button('Enter into Emergency Queue'):
-            emergency_input = {
-                'user_name': name,
-                'kind_of_disease': 'Parkinsons_preiction',
-                'level_of_disease': parkinsons_prediction
-            }
+    emergency_input = {
+            'user_name': name,
+            'kind_of_disease': 'Parkinsons_preiction',
+            'level_of_disease': prediction
+    }
+    if st.button('Enter into Emergency Queue'):
+        if name != '':
             collection.insert_one(emergency_input)

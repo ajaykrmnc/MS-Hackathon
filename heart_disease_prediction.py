@@ -88,10 +88,11 @@ def heart_disease_prediction(heart_disease_model, collection):
     
     if heart_diagnosis != '':
         st.success(heart_diagnosis)
-        if st.button('Enter into Emergency Queue'):
-            emergency_input = {
-            'user_name': name,
-            'kind_of_disease': 'Heart',
-            'level_of_disease': prediction
-        }
-        collection.insert_one(emergency_input)
+    emergency_input = {
+        'user_name': name,
+        'kind_of_disease': 'Heart',
+        'level_of_disease': prediction
+    }
+    if st.button('Enter into Emergency Queue'):
+        if name != '':
+            collection.insert_one(emergency_input)

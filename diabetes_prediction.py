@@ -32,28 +32,28 @@ def diabetes_prediction(diabetes_model, collection):
         Age = st.text_input('Age of the Person', placeholder='45')
 
     diab_diagnosis = ''
-    diab_prediction = 0
+    prediction = 0
 
     if st.button('Diabetes Test Result'):
         user_input = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
         user_input = [float(x) for x in user_input]
 
         diab_prediction = diabetes_model.predict([user_input])
+        prediction = diab_prediction[0]
 
         if diab_prediction[0] == 1:
             diab_diagnosis = 'The person is diabetic'
         else:
             diab_diagnosis = 'The person is not diabetic'
-    if st.button('Enter into Emergency Queue'):
-        emergency_input = [name, 'Diabetes', diab_prediction]
-        collection.save_one(emergency_input);
     if diab_diagnosis != '':
         st.success(diab_diagnosis)
-        if st.button('Enter into Emergency Queue'):
-            emergency_input = {
-            'user_name': name,
-            'kind_of_disease': 'Diabetes',
-            'level_of_disease': diab_prediction
-            }
-        collection.insert_one(emergency_input)
+    emergency_input = {
+        'user_name': name,
+        'kind_of_disease': 'Diabetes',
+        'level_of_disease': prediction
+    }
+
+    if st.button('Enter into Emergency Queue'):
+        if name != '':
+            collection.insert_one(emergency_input)
 
