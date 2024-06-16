@@ -14,8 +14,6 @@ The AI Medical Health App is deployed and ready to use. You can access it throug
 ## Features
 The AI Medical Health App offers the following services:
 
-# Disease Prediction using Machine Learning
-
 1. **Disease Prediction for common disease using Machine Learning**: 
     - Parkinson's disease
     - Diabetes
