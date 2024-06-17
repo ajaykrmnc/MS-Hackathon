@@ -97,6 +97,41 @@ seaborn == 0.13.2
 scipy == 1.10.1
 colorama == 0.4.6
 ```
+## File structure
+```
+├── __pycache__
+├── app.py
+├── assets
+│   └── doctor.png
+├── home.py
+├── bmi_calculator.py
+├── cancer_prediction.py
+├── chatbot.py
+├── datastore.py // For the Dashboard
+├── diabetes_prediction.py
+├── heart_disease_prediction.py
+├── model.pkl
+├── parkinsons_prediction.py
+├── readme.md
+├── colab_files_to_train_models
+│   ├── Multiple disease prediction system - Parkinsons.ipynb
+│   ├── Multiple disease prediction system - diabetes.ipynb
+│   └── Multiple disease prediction system - heart.ipynb
+├── saved_models
+│   ├── diabetes_model.sav
+│   ├── heart_disease_model.sav
+│   ├── parkinsons_model.sav
+│   └── scaler_heart.pkl
+├── data.csv
+├── dataset
+│   ├── diabetes.csv
+│   ├── heart.csv
+│   └── parkinsons.csv
+├── requirements.txt
+├── scaler.pkl
+└── style.css
+```
+
 
 ## Usage
 
