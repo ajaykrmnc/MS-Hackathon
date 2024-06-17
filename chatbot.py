@@ -1,7 +1,24 @@
 import streamlit as st
+import openai
+from openai import AzureOpenAI
+
+# Define constants
+ENDPOINT = "https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"
+API_KEY = "445dcfab-cbf2-463c-a733-b66c7dd8ba50"
+API_VERSION = "2024-02-01"
+
+# Define the model name
+model_name = "gpt-35-turbo"
+
+# Initialize Azure OpenAI client
+client = AzureOpenAI(
+    azure_endpoint=ENDPOINT,
+    api_key=API_KEY,
+    api_version=API_VERSION,
+)
 
 # Define the chatbot function
-def chatbot(client, model_name):
+def chatbot():
     st.title("CureAI Chatbot")
     st.write("Welcome to CureAI chatbot. You can ask any health-related queries and get responses from the chatbot.")
 
@@ -11,7 +28,6 @@ def chatbot(client, model_name):
 
     # Input field for user message
     user_input = st.text_input("Your message:", key="user_input")
-    # Set the position of the input field to be fixed at the bottom of the screen
 
     if st.button("Send"):
         if user_input.strip() == "":
@@ -20,17 +36,20 @@ def chatbot(client, model_name):
             # Add the user's message to the conversation history
             st.session_state.messages.append({"role": "user", "content": user_input})
 
-            # Generate the chatbot's response
-            completion = client.chat.completions.create(
-                model=model_name,
-                messages=st.session_state.messages
-            )
+            try:
+                # Generate the chatbot's response
+                completion = client.chat.completions.create(
+                    model=model_name,
+                    messages=st.session_state.messages
+                )
 
-            # Extract the chatbot's response
-            assistant_response = completion.choices[0].message.content
+                # Extract the chatbot's response
+                assistant_response = completion.choices[0].message.content
 
-            # Add the chatbot's response to the conversation history
-            st.session_state.messages.append({"role": "assistant", "content": assistant_response})
+                # Add the chatbot's response to the conversation history
+                st.session_state.messages.append({"role": "assistant", "content": assistant_response})
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
 
     # Display the conversation history
     for message in st.session_state.messages:
@@ -41,4 +60,3 @@ def chatbot(client, model_name):
 
     st.markdown("---")
 
-# Run the chatbot function

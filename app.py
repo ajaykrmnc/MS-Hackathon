@@ -16,16 +16,6 @@ from chatbot import chatbot
 from cancer_prediction import cancer_prediction
 from datastore import table
 
-ENDPOINT = "https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"
-API_KEY = "445dcfab-cbf2-463c-a733-b66c7dd8ba50"
-API_VERSION = "2024-02-01"
-MODEL_NAME = "gpt-35-turbo"
-
-client = AzureOpenAI(
-    azure_endpoint=ENDPOINT,
-    api_key=API_KEY,
-    api_version=API_VERSION,
-)
 
 # database setup
 from pymongo import MongoClient
@@ -102,7 +92,7 @@ if selected == 'Disease Checker':
     elif sub_selected == 'Breast Cancer':
         cancer_prediction(collection)
 elif selected == 'CureAI ChatBot':
-    chatbot(client, MODEL_NAME)
+    chatbot()
 elif selected == 'Home':
     home()
 else:
