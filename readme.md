@@ -60,7 +60,17 @@ sudo apt install python3.8
 pip install -r requirements.txt
 ```
 
-### Step 3: Run the App
+### Step 3: Add the api_key and MongoDB database uri
+Add the MongoDB database and OpenAI API key to the `.streamlit/secrets.toml` file. Make sure to replace `YOUR_MONGODB_URI` with the URI of your MongoDB database and `YOUR_OPENAI_API_KEY` with your OpenAI API key.
+```toml
+[MongoDB]
+uri = "YOUR_MONGODB_URI"
+
+[OpenAI]
+api_key = "YOUR_OPENAI_API_KEY"
+```
+
+### Step 4: Run the App
 Start the Streamlit app by running the following command in the project directory:
 ```bash
 streamlit run app.py
