@@ -67,7 +67,7 @@ Add the MongoDB database and OpenAI API key to the `.streamlit/secrets.toml` fil
 uri = "YOUR_MONGODB_URI"
 
 [OpenAI]
-api_key = "YOUR_OPENAI_API_KEY"
+API_KEY = "YOUR_OPENAI_API_KEY"
 ```
 
 ### Step 4: Run the App
