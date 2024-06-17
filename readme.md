@@ -166,8 +166,10 @@ The BMI categories used in this application are:
 - Obese: BMI >= 30
 
 ### 2. Diabetes Predictor 
+```
 File Location -> colab_files_to_train_models -> Multiple disease prediction system - diabetes.ipynb<br>
 Dataset Location -> dataset -> diabetes.csv
+```
 
 The algorithm being developed for this research uses machine learning to forecast an individual's risk of developing diabetes based on a number of different health indicators. Using Streamlit as the UI framework, the application lets users enter pertinent health information and get estimates of their risk of developing diabetes<br>
 Features<br>
@@ -179,8 +181,10 @@ Features<br>
 This Model is build over Support Vector Classifier, A Machine Learning Model and Provides a accuracy of 77% over the test data
 
 ### 3. Heart Disease Predictor
+```
 File Location -> colab_files_to_train_models -> Multiple disease prediction - heart.ipynb<br>
 Dataset Location -> dataset -> heart.csv
+```
 
 This project is a machine learning-based system that uses a variety of health metrics to estimate an individual's risk of heart disease. Using Streamlit as the UI framework, the application lets users enter pertinent health information and get risk estimates for heart disease.<br>
 Features<br>
@@ -192,18 +196,17 @@ Features<br>
 
 Following machine learning models has been tested<br>
 - KNN + tune hyperparameters
-
 - SVM + tune hyperparameters
-
 - Decision Trees + tune hyperparameters
-
 - Random Forest + tune hyperparameters
 
 Finally support vector classifier has been selected with a maximum accuracy of 93%<br>
 
 ### 4. Parkinsons Disease Predictor
+```
 File Location -> colab_files_to_train_models -> Multiple disease prediction - Parkinsons.ipynb<br>
 Dataset Location -> dataset -> parkinsons.csv
+```
 
 With the use of several health indicators, this project's machine learning-based system will be able to forecast a person's risk of developing Parkinson's disease. Using Streamlit as the UI framework, the program lets users enter pertinent health information and get estimates of their chance of developing Parkinson's disease.<br>
 Features<br>
@@ -223,8 +226,10 @@ Following Machine Learning Models has been used to determine the outcome for Dis
 Final Model used to for classification is Random Forest Classifier with accuracy of 89%
 
 ### 5. Breast Cancer Classifier (Malignant/Benign)
+```
 File Location -> cancer_prediction.py
 Dataset Location -> data.csv
+```
 
 Having various Health indicators as attributes like a cell's mean radius, Texture Mean, perimeter Mean, Area mean, etc this Machine Learning Model predicts whether the breast cancer is of malignant or benign type.<br>
 Features<br>
