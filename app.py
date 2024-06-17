@@ -23,8 +23,7 @@ import streamlit as st
 
 
 from pymongo.server_api import ServerApi
-
-uri = "mongodb+srv://ajay:ajay@cluster0.2x7rivc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = st.secrets["uri"]
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))

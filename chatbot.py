@@ -4,7 +4,7 @@ from openai import AzureOpenAI
 
 # Define constants
 ENDPOINT = "https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"
-API_KEY = "445dcfab-cbf2-463c-a733-b66c7dd8ba50"
+API_KEY = st.secrets["API_KEY"]
 API_VERSION = "2024-02-01"
 
 # Define the model name
