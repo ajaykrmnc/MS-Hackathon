@@ -154,8 +154,8 @@ Please note that the Admin Dashboard is intended for hospital management use onl
 
 We are continuously working on enhancing the AI Medical Health App to provide the best possible user experience and meet the needs of both patients and healthcare professionals.
 
-# Different Models Used
-# 1. BMI-Calculator
+## Different Models Used
+### 1. BMI-Calculator
 File Location -> bmi_calculator.py<br>
 
 Body Mass Index (BMI) is a simple and widely used method for assessing an individual's body weight relative to their height. It is calculated by dividing a person's weight in kilograms by the square of their height in meters (kg/m²). Here are some reasons why BMI is useful:
@@ -165,7 +165,7 @@ The BMI categories used in this application are:
 - Overweight: 25 <= BMI < 29.9
 - Obese: BMI >= 30
 
-# 2. Diabetes Predictor 
+### 2. Diabetes Predictor 
 File Location -> colab_files_to_train_models -> Multiple disease prediction system - diabetes.ipynb<br>
 Dataset Location -> dataset -> diabetes.csv
 
@@ -178,7 +178,7 @@ Features<br>
 
 This Model is build over Support Vector Classifier, A Machine Learning Model and Provides a accuracy of 77% over the test data
 
-# 3. Heart Disease Predictor
+### 3. Heart Disease Predictor
 File Location -> colab_files_to_train_models -> Multiple disease prediction - heart.ipynb<br>
 Dataset Location -> dataset -> heart.csv
 
@@ -201,7 +201,7 @@ Following machine learning models has been tested<br>
 
 Finally support vector classifier has been selected with a maximum accuracy of 93%<br>
 
-# 4. Parkinsons Disease Predictor
+### 4. Parkinsons Disease Predictor
 File Location -> colab_files_to_train_models -> Multiple disease prediction - Parkinsons.ipynb<br>
 Dataset Location -> dataset -> parkinsons.csv
 
@@ -222,7 +222,7 @@ Following Machine Learning Models has been used to determine the outcome for Dis
 
 Final Model used to for classification is Random Forest Classifier with accuracy of 89%
 
-# 5. Breast Cancer Classifier (Malignant/Benign)
+### 5. Breast Cancer Classifier (Malignant/Benign)
 File Location -> cancer_prediction.py
 Dataset Location -> data.csv
 
